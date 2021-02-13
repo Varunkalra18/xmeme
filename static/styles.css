@@ -1,0 +1,109 @@
+html{
+  scroll-behavior: smooth ;
+  transition-duration: 3s ;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+.form-control
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    width: 60%;
+}
+
+.form-controls{
+    width:49%;
+    height:38px;
+    border :solid grey 1px;
+}
+.formm
+{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+    border: solid grey 3px;
+    /* Center contents */
+    text-align: center;
+}
+.username {
+  color:#181C4D;
+  font-weight:bold;
+}
+.memem{
+    border:solid black 1px;
+    width:100%;
+    font-size:30px;
+}
+.memem span{
+    font-size:20px;
+    margin-left:40px;
+    color:#B0DFE5;
+}
+
+.dis{
+    width:100%;
+}
+.header{
+    height:auto;
+}
+.for{
+    height:auto;
+}
+.button{
+    margin-top:250px;
+}
+@media only screen and (max-width: 768px) {
+.button h3{
+    font-size:25px;
+}
+.button > a{
+    font-size:15px;
+}
+.button{
+    margin-top:0px;
+}
+.form-control
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+.form-controls{
+    width:auto;
+    height:38px;
+    margin-bottom:15px;
+    border :solid grey 1px;
+}
+.fom > img{
+    width:100%;
+    height:50%;
+    margin-left:40px;
+}
+}
