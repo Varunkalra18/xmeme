@@ -1,1 +1,1 @@
-web: gunicorn application:xmeme
+web: gunicorn application:application.py
