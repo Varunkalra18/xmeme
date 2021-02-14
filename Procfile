@@ -1,1 +1,1 @@
-web: gunicorn app:xmeme
+web: gunicorn application:xmeme
