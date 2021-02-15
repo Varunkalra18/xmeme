@@ -33,37 +33,28 @@ def index():
     return redirect("/meme")
 
 
-@app.route("/memes", methods=['GET', 'POST'])
+@app.route("/todo/api/v1.0/memes/<int:id>", methods=['GET', 'POST'])
 def rest():
     if request.method == "GET":
-        ide = request.args.get("id", None)
-        if not ide:
-            rows = db.execute("SELECT * FROM xmeme ORDER BY user_id LIMIT 100 ")
-            if not rows:
-                print("yo")
-                return jsonify(reversed(rows))
-            else:
-                print("No")
-                return jsonify(reversed(rows))
-        elif str(ide).isdigit():
-            print(f"got name {ide}")
-            rows = db.execute("SELECT * FROM xmeme WHERE user_id = :values", values=int(ide))
-            if not rows:
-                return "NO MEME Found"
-            else:
-                print("fo")
-                return jsonify(reversed(rows))
-    else:
-        username = request.args.get("username")
-        caption = request.args.get("caption")
-        url = request.args.get("url")
-        if not username or not caption or not url:
-            return "Please provide all args"
-        else:
-            db.execute("INSERT INTO xmeme (username, caption, url) VALUES (:username, :caption, :url)", username = username, caption = caption, url = url)
-            rows = db.execute("SELECT user_id FROM xmeme WHERE url = :values", values=url)
-            return jsonify(rows)
+        rows = db.execute("SELECT * FROM xmeme")
+        return jsonify(rows)
 
+@app.route("/todo/api/v1.0/memes/<int:id>", methods=['GET', 'POST'])
+def resti(id):
+    if request.method == "GET":
+        rows = db.execute("SELECT * FROM xmeme WHERE id = :value", value = id)
+        if not rows:
+            return "404"
+        else:
+            return jsonify(rows)
+@app.route("/api/v1.0/memes/<string:username>,<string:caption>, <string:url>", methods=["POST"])
+def restp(username, caption, url):
+    if not username or not caption or not url:
+        return "Enter all fields"
+    else:
+        db.execute("INSERT INTO xmeme (username, caption, url) VALUES (:username, :caption, :url)", username = username, caption = caption, url = url)
+        rows = db.execute("SELECT id FROM xmeme WHERE url = :url", url = url)
+        return jsonify(rows["id"])
 
 @app.route("/meme", methods = ['GET' , 'POST'])
 def frontend():
